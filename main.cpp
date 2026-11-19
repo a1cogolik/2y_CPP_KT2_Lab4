@@ -1,8 +1,9 @@
-﻿#include <iostream>
+﻿#include <cctype>
+#include <clocale>
+#include <iostream>
 #include <limits>
-#include <string>
-#include <cctype>
 #include <sstream>
+#include <string>
 
 #include "money.h"
 
