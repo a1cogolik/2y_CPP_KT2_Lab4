@@ -2,6 +2,7 @@
 #include <limits>
 #include <string>
 #include <cctype>
+#include <sstream>
 
 #include "money.h"
 
@@ -99,8 +100,9 @@ int main() {
 
   std::cout << "4. Метод SubtractKopeks:\n";
   unsigned int sub_kop = InputUnsignedInt("    Вычесть копеек из m2: ");
-  PrintTest("m2.SubtractKopeks(" + std::to_string(sub_kop) + ")",
-            m2.SubtractKopeks(sub_kop));
+  std::ostringstream oss1;
+  oss1 << "m2.SubtractKopeks(" << sub_kop << ")";
+  PrintTest(oss1.str(), m2.SubtractKopeks(sub_kop));
 
   Pause();
 
@@ -146,27 +148,22 @@ int main() {
   std::cout << "1. Вычитание копеек (Money - unsigned int):\n";
   Money m8 = InputMoney("m8");
   unsigned int kopeks_to_sub = InputUnsignedInt("    Вычесть копеек: ");
-  PrintTest(std::to_string(m8.GetRubles()) + " rub. " +
-                std::to_string(m8.GetKopeks()) + " kop. - " +
-                std::to_string(kopeks_to_sub) + " коп.",
-            m8 - kopeks_to_sub);
+  std::ostringstream oss2;
+  oss2 << m8 << " - " << kopeks_to_sub << " коп.";
+  PrintTest(oss2.str(), m8 - kopeks_to_sub);
 
   std::cout << "2. Вычитание денежных сумм (Money - Money):\n";
   Money m10 = InputMoney("m10");
-  PrintTest(std::to_string(m8.GetRubles()) + " rub. " +
-                std::to_string(m8.GetKopeks()) + " kop. - " +
-                std::to_string(m10.GetRubles()) + " rub. " +
-                std::to_string(m10.GetKopeks()) + " kop.",
-            m8 - m10);
+  std::ostringstream oss3;
+  oss3 << m8 << " - " << m10;
+  PrintTest(oss3.str(), m8 - m10);
 
   std::cout << "3. Граничный случай (вычитание большего из меньшего):\n";
   Money m12 = InputMoney("m12 (меньшее)");
   Money m13 = InputMoney("m13 (большее)");
-  PrintTest(std::to_string(m12.GetRubles()) + " rub. " +
-                std::to_string(m12.GetKopeks()) + " kop. - " +
-                std::to_string(m13.GetRubles()) + " rub. " +
-                std::to_string(m13.GetKopeks()) + " kop.",
-            m12 - m13);
+  std::ostringstream oss4;
+  oss4 << m12 << " - " << m13;
+  PrintTest(oss4.str(), m12 - m13);
 
   Pause();
 
